@@ -169,13 +169,16 @@ $result = $stmt->get_result();
                             <a href="dashboard.php?action=in-progress&id=<?php echo $row['id']; ?>" class="btn btn-warning btn-sm">In Progress</a>
                             <a href="dashboard.php?action=completed&id=<?php echo $row['id']; ?>" class="btn btn-success btn-sm">Completed</a>
                             <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#submitTaskModal<?php echo $row['id']; ?>">Submit Task</button>
+                            <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#editTaskModal<?php echo $row['id']; ?>">Edit</button>
+
                         </td>
- 
 
                     </tr>
 
+                    <?php include 'update_task.php';?>
+
                 <?php endwhile; ?>
-                  
+            
             </tbody>
 
         </table>
@@ -186,6 +189,7 @@ $result = $stmt->get_result();
     <?php endif; ?>
 
     <?php include 'taskModal.php'; ?>
+    
     </div>
 
     <!-- <div class="container text-center mt-5">
@@ -195,6 +199,15 @@ $result = $stmt->get_result();
     <!-- <?php
     // include 'leave_request.php';
     ?> -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var modals = document.querySelectorAll('.modal');
+    modals.forEach(function (modal) {
+        new bootstrap.Modal(modal);
+    });
+});
+</script>
 
 
 </body>

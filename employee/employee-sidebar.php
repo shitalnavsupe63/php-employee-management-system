@@ -99,6 +99,7 @@ $employeePhoto = $employee['photo'] ? "../uploads/" . $employee['photo'] : "../a
             <ul class="list-group list-group-flush mt-1">
                 <li class="list-group-item"><a href="edit_profile.php" class="a text-decoration-none">Edit Profile</a></li>
                 <li class="list-group-item"><a href="dashboard.php" class="a text-decoration-none">Assigned Tasks</a></li>
+                <li class="list-group-item"><a href="submitted_tasks.php" class="a text-decoration-none">Submitted Tasks</a></li>
                 <li class="list-group-item"><a href="leave_request.php" class="a text-decoration-none">Apply for Leave</a></li>
                 <li class="list-group-item"><a href="holidays.php" class="a text-decoration-none">Holiday Calendar</a></li>
                 <li class="list-group-item"><a href="../employee/logout.php" class="a text-decoration-none text-danger">Logout</a></li>
@@ -106,6 +107,6 @@ $employeePhoto = $employee['photo'] ? "../uploads/" . $employee['photo'] : "../a
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
 </body>
 </html>

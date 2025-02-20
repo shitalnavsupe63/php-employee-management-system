@@ -25,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,14 +78,64 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     .table th, .table td{
         vertical-align: middle;
     }
-
     
 </style>
 
-
-
 <body>
     <div class="container mt-3">
+        <div class="card mb-5">
+            <div class="card-header">
+                <h4>Assign a task</h4>
+            </div>
+
+            <?php if ($success): ?>
+                    <div class="alert alert-success text-center w-50 mt-3"><?= $success ?></div>
+            <?php endif; ?>
+
+            <?php if ($error) : ?>
+                <div class="alert alert-danger text-center w-50 mt-3"><?= $error ?></div>
+            <?php endif; ?>
+                
+            <div class="card-body">
+                <form action="assign_task.php" method="post">
+                    <div class="form-group">
+                        <label for="deadline" class="form-label">Deadline : </label>
+                        <input type="date" class="form-control w-50" name="deadline" id="deadline" required>
+                        
+                        <label for="assigned_to" class="form-label mt-3">Assign to : </label>
+                        <select class="form-select w-50" name="assigned_to" id="assigned_to" required>
+                            <option value="">Employee</option>
+                        
+                            <?php 
+                                $query = "SELECT * FROM employees where is_admin='0' ";
+                                $result = mysqli_query($conn, $query);
+                            ?>
+
+                            <?php while ($row = $result->fetch_assoc()) : ?>
+                                <option value="<?php echo $row['id']; ?>">
+                            <?php echo $row['fullname']; ?>
+
+                            </option>
+                            <?php endwhile; ?>
+                    
+                        </select>
+
+                    </div>
+
+                    <div class="form-group mt-3">
+
+                        <label class="form-label" for="description">Task : </label>
+                        <textarea class="form-control" name="description" id="description" rows="4" required></textarea>
+
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mt-3">Assign Task</button>
+
+                </form>
+            </div>
+        </div>
+
+        <!-- task status  -->
         <div class="card shadow ">
             <div class="card-header">
                 <h4>Task Status</h4>
@@ -122,69 +171,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
                         }
                     ?>
                 </tbody>
-
             </table>
 
             </div>
-
         </div>
-
-        <div class="card mt-5">
-            <div class="card-header">
-                <h4>Assign a task</h4>
-            </div>
-
-            <?php if ($success): ?>
-                    <div class="alert alert-success text-center w-50 mt-3"><?= $success ?></div>
-            <?php endif; ?>
-
-            <?php if ($error) : ?>
-                <div class="alert alert-danger text-center w-50 mt-3"><?= $error ?></div>
-            <?php endif; ?>
-                
-            <div class="card-body">
-                <form action="assign_task.php" method="post">
-                    <div class="form-group">
-                        <label for="deadline" class="form-label">Deadline : </label>
-                        <input type="date" class="form-control w-50" name="deadline" id="deadline" required>
-                       
-                        <label for="assigned_to" class="form-label mt-3">Assign to : </label>
-                        <select class="form-select w-50" name="assigned_to" id="assigned_to" required>
-                            <option value="">Employee</option>
-                        
-                            <?php 
-                                $query = "SELECT * FROM employees where is_admin='0' ";
-                                $result = mysqli_query($conn, $query);
-                            ?>
-
-                            <?php while ($row = $result->fetch_assoc()) : ?>
-                                <option value="<?php echo $row['id']; ?>">
-                            <?php echo $row['fullname']; ?>
-
-                            </option>
-                            <?php endwhile; ?>
-                    
-                         </select>
-
-                    </div>
-
-                    <div class="form-group mt-3">
-
-                         <label class="form-label" for="description">Task : </label>
-                         <textarea class="form-control" name="description" id="description" rows="4" required></textarea>
-
-                    </div>
-
-                    <button type="submit" class="btn btn-primary mt-3">Assign Task</button>
-
-                </form>
-
-                
-
-            </div>
-
-        </div>
-
     </div>
 
 </body>

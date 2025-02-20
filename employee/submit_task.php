@@ -10,12 +10,13 @@ if (isset($_POST['submit_task'])) {
 
     // Handle multiple image uploads
     $image_paths = [];
-    $upload_dir = "uploads/"; // Ensure this folder exists
+    $upload_dir = "../uploads/"; 
+    
     foreach ($_FILES['submission_images']['tmp_name'] as $key => $tmp_name) {
         $file_name = basename($_FILES['submission_images']['name'][$key]);
         $target_file = $upload_dir . $file_name;
         if (move_uploaded_file($tmp_name, $target_file)) {
-            $image_paths[] = $target_file;
+            $image_paths[] = $file_name;
         }
     }
     $submission_images = implode(",", $image_paths); // Store as a comma-separated string

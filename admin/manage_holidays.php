@@ -55,7 +55,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     .table th{
         background-color:rgb(165, 187, 225);
     }
-    
+
 </style>
 <body>
     <div class="container mt-3">
@@ -106,7 +106,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     echo "<tr>
                         <td>{$row['holiday_name']}</td>
                         <td>{$row['holiday_date']}</td>
-                        <td><a class='btn btn-danger' href='delete_holiday.php?id={$row['id']}'>Delete</a></td>
+                        <td><a class='btn btn-danger' href='delete_holidays.php?id={$row['id']}'>Delete</a></td>
                     </tr>";
                     }
                 ?>

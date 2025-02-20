@@ -109,6 +109,7 @@ if ($isAdmin) {
                 <?php endif; ?>
                 <li class="list-group-item"><a href="dashboard.php" class="a text-decoration-none">Employee List</a></li>
                 <li class="list-group-item"><a href="assign_task.php" class="a text-decoration-none">Assign Task</a></li>
+                <li class="list-group-item"><a href="completed_tasks.php" class="a text-decoration-none">Submitted Tasks</a></li>
                 <li class="list-group-item"><a href="manage_leaves.php" class="a text-decoration-none">Manage Leaves</a></li>
                 <li class="list-group-item"><a href="manage_holidays.php" class="a text-decoration-none">Manage Holidays</a></li>
                 <li class="list-group-item"><a href="logout.php" class="a text-decoration-none text-danger">Logout</a></li>
